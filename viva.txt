@@ -1,0 +1,151 @@
+1.	Phases of compiler
+Lexical Analysis (Scanner): Breaks the source code into tokens (keywords, identifiers, operators, etc.).
+Syntax Analysis (Parser): Organizes tokens into a syntax tree based on grammar rules.
+Semantic Analysis: Ensures that the syntax is meaningful (e.g., variable type checking).
+Intermediate Code Generation: Generates an intermediate representation of the program.
+Optimization: Improves the intermediate code for better performance.
+Code Generation: Converts the intermediate code into the target machine code or assembly.
+Code Emission: Outputs the final machine code or assembly.
+
+2.	Compiler vs interpreter
+Compiler: Translates the entire source code into machine code at once, which can be executed later
+. It performs the translation before execution.
+Advantage: Faster execution after compilation, error detection in all parts of the program at once.
+Disadvantage: Longer compilation time.
+Interpreter: Translates the source code line by line, executing it immediately.
+Advantage: Easier to debug, can start execution without a full compile.
+Disadvantage: Slower execution since translation happens during runtime.
+
+3.	Ip and op of each phase
+Lexical Analysis:
+Input: Source code (characters).
+Output: Tokens (keywords, operators, identifiers).
+Syntax Analysis:
+Input: Tokens.
+Output: Parse tree or syntax tree.
+Semantic Analysis:
+Input: Syntax tree.
+Output: Annotated syntax tree (with type information, for example).
+Intermediate Code Generation:
+Input: Annotated syntax tree.
+Output: Intermediate code (like three-address code).
+Optimization:
+Input: Intermediate code.
+Output: Optimized intermediate code.
+Code Generation:
+Input: Optimized intermediate code.
+Output: Machine code or assembly code.
+
+4.	Compiler tools 
+Lex/Flex: Tools for generating lexical analyzers.
+Yacc/Bison: Tools for generating parsers.
+ANTLR: A tool for generating parsers and lexers.
+LLVM: A compiler infrastructure with modular tools.
+Clang: A front-end compiler for LLVM.
+GCC: GNU Compiler Collection, which supports multiple languages.
+
+5.	Parse tree
+A parse tree is a tree representation of the syntactic structure of a source program according to a formal grammar.
+Each node represents a construct occurring in the source code, and leaves represent tokens.
+
+6.	Dfa vs nfa, draw
+DFA (Deterministic Finite Automaton):
+
+Each state has a single transition for each input symbol.
+Always has exactly one path for processing input.
+NFA (Non-deterministic Finite Automaton):
+
+Can have multiple transitions for a given input symbol, or even no transition.
+Allows epsilon (empty string) transitions.
+
+Difference:
+
+DFA is deterministic, while NFA can have multiple possibilities.
+Both accept the same set of languages (regular languages), but DFA is easier to implement.
+Example:
+
+DFA: A machine that accepts strings with even numbers of 0s.
+NFA: A machine that accepts strings containing "ab" or "cd"
+
+7.	First and follow rules
+First Set: The set of terminals that can appear at the beginning of a string derived from a non-terminal.
+Follow Set: The set of terminals that can appear immediately after a non-terminal in some derivation.
+???????????
+
+
+8.	Types of parsers
+Top-down Parsers: These parse from the start symbol down to the leaves. Examples: Recursive Descent, LL parsers.
+Bottom-up Parsers: These parse from the leaves up to the start symbol. Examples: LR parsers, Shift-Reduce parsers.
+
+10.	Actions of shift reduce parser
+11.	draw syntax tree for an expression using operator precedence grammar
+
+12.	Compiler writing tools
+Lex/Flex for lexical analysis.
+Yacc/Bison for syntax analysis.
+LLVM for backend compilation.
+GCC for code generation.
+ANTLR for both lexical and syntax analysis.
+
+13.	disadvantage of operator precedence parser
+Complex to implement.
+Hard to maintain for large grammars.
+Can struggle with ambiguous cases or associativity issues.
+
+1.	What is the difference between DFA &NFA ? 
+2.	What are  the rules of First and follow ?
+3.	What are the rules of  left factoring ?
+4.	What is operator precedence ? 
+5.	Advantage and disadvantage of operator precedence ?
+
+16.	Two methods of dfa minimisation 
+Partition Refinement: Partition the set of states into equivalence classes.
+State Merging: Merge equivalent states until no further merging is possible.
+
+18.	Dfa, nfa, e nfa definition, example, difference 
+
+19.	Lexeme pattern token definition and example
+Token: Category of a lexeme (e.g., keyword, identifier).
+Pattern: A regular expression that defines how lexemes for a particular token can be recognized.
+Lexeme: The actual string matched by the pattern.
+Example:
+Token: Keyword (if)
+Pattern: [a-zA-Z_][a-zA-Z0-9_]* (for identifiers).
+Lexeme: if, var123.
+
+21.	Parts of compiler(front end and backend)
+Frontend: Lexical Analysis, Syntax Analysis, Semantic Analysis.
+Backend: Code Generation, Optimization, Code Emission.
+
+22.	1.What are handles
+A handle is a substring of the input that matches the right-hand side of a production in a 
+context-free grammar and can be reduced to the non-terminal on the left-hand side of the production.
+
+23.	2.Explain operator precedence parser 
+24.	3.Different types of lr parsers
+LR(0): A simple type of LR parser with no lookahead.
+LALR: Lookahead LR parsers that use one token of lookahead.
+SLR: Simple LR parsers that simplify LR parsing.
+Canonical LR: Full LR parser with a large state space
+
+25.	4.full form of lalr parser
+29.	8.Assembler 
+31.	10.parse tree vs annoted parser tree
+Parse Tree: Represents the syntactic structure based on grammar.
+Annotated Parse Tree: A parse tree with additional information (e.g., type information, variable scope).
+32.	11.lex and yacc program structure 
+Lex: Defines token patterns.
+Yacc: Defines grammar rules for parsing.
+
+A Lex program consists of three main sections:
+
+Definitions Section
+Rules Section
+User Code Section
+
+
+33.	12.Use of yytext,yyparse(),yywrap(),yylex
+yytext: Stores the current token.
+yyparse(): Parses the input.
+yywrap(): A function that returns when no more input is available.
+yylex(): The lexer function that returns the next token.
